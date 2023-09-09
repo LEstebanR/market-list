@@ -17,6 +17,7 @@ import Logo from "./Logo";
 import { MdDensityMedium } from "react-icons/md";
 import { GoSun, GoMoon } from "react-icons/go";
 import { useTheme } from "next-themes";
+import { usePathname } from "next/navigation";
 
 const options = [
   { label: "Features", value: "option-1" },
@@ -26,6 +27,9 @@ const options = [
 
 export function Header(): React.ReactElement {
   const { systemTheme, theme, setTheme } = useTheme();
+  const pathName = usePathname();
+
+  console.log(pathName);
   return (
     <Navbar
       className="navbar flex justify-between bg-light p-0 dark:bg-dark lg:w-8/12"
@@ -59,11 +63,14 @@ export function Header(): React.ReactElement {
           }
         ></Switch>
       </NavbarItem>
-      <NavbarItem className="hidden sm:flex">
-        <Button as={Link} color="primary" href="#" variant="bordered">
-          Login
-        </Button>
-      </NavbarItem>
+      {pathName !== "/login" && (
+        <NavbarItem className="hidden sm:flex">
+          <Button as={Link} color="primary" href="/login" variant="bordered">
+            Login
+          </Button>
+        </NavbarItem>
+      )}
+
       <NavbarItem>
         <Button
           className="hidden sm:flex"
@@ -100,22 +107,25 @@ export function Header(): React.ReactElement {
               ))}
             </DropdownSection>
             <DropdownSection>
-              <DropdownItem textValue="Login button">
-                <Button
-                  as={Link}
-                  color="primary"
-                  href="#"
-                  fullWidth
-                  variant="bordered"
-                >
-                  Login
-                </Button>
-              </DropdownItem>
-              <DropdownItem textValue="Sign Up button">
-                <Button as={Link} color="primary" href="#" fullWidth>
-                  Sign Up
-                </Button>
-              </DropdownItem>
+              {pathName !== "/login" ? (
+                <DropdownItem textValue="Login button">
+                  <Button
+                    as={Link}
+                    color="primary"
+                    href="/login"
+                    fullWidth
+                    variant="bordered"
+                  >
+                    Login
+                  </Button>
+                </DropdownItem>
+              ) : (
+                <DropdownItem textValue="Sign Up button">
+                  <Button as={Link} color="primary" href="#" fullWidth>
+                    Sign Up
+                  </Button>
+                </DropdownItem>
+              )}
             </DropdownSection>
           </DropdownMenu>
         </Dropdown>
