@@ -15,10 +15,9 @@ export const Title: React.FC<Props> = ({ children, gradient }) => {
         WebkitTextFillColor: "transparent",
       }
     : {};
-
   return (
     <h1
-      className={`text-7xl font-bold text-center text-black dark:text-white ${
+      className={`text-center text-7xl font-bold text-black dark:text-white ${
         gradient ? "bg-gradient-to-r from-primary to-secondary" : ""
       }`}
       style={h1Styles}
@@ -30,7 +29,7 @@ export const Title: React.FC<Props> = ({ children, gradient }) => {
 
 export const Body: React.FC<Props> = ({ children }) => {
   return (
-    <p className="text-xl font-medium text-left text-black dark:text-white">
+    <p className="text-left text-xl font-medium text-black dark:text-white">
       {children}
     </p>
   );
@@ -39,6 +38,7 @@ export const Body: React.FC<Props> = ({ children }) => {
 export const Subtitle: React.FC<Props> = ({ children, color }) => {
   return (
     <h2
+      // eslint-disable-next-line tailwindcss/no-custom-classname
       className={`text-3xl font-bold 
       ${color ? `text-${color}` : "text-black dark:text-white"}
       `}

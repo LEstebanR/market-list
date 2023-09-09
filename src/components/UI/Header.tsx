@@ -28,7 +28,7 @@ export function Header(): React.ReactElement {
   const { systemTheme, theme, setTheme } = useTheme();
   return (
     <Navbar
-      className="bg-light dark:bg-dark lg:w-8/12 flex justify-between p-0 navbar"
+      className="navbar flex justify-between bg-light p-0 dark:bg-dark lg:w-8/12"
       maxWidth="full"
     >
       <NavbarBrand className="px-0">
@@ -81,13 +81,13 @@ export function Header(): React.ReactElement {
             <Button isIconOnly size="md" variant="bordered">
               <MdDensityMedium
                 size={24}
-                className="dark:text-white text-black"
+                className="text-black dark:text-white"
               />
             </Button>
           </DropdownTrigger>
           <DropdownMenu
             variant="shadow"
-            className="dark:bg-dark dark:text-light rounded-xl"
+            className="rounded-xl dark:bg-dark dark:text-light"
             aria-label="Dropdown menu"
           >
             <DropdownSection showDivider>
